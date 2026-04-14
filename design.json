@@ -1,0 +1,256 @@
+{
+  "brand": "ATWO STUDIOS",
+  "version": "1.0.0",
+  "fonts": {
+    "coolveticaHeavyCompressed": {
+      "family": "Coolvetica Heavy Compressed",
+      "src": "https://framerusercontent.com/assets/uLMpONHY7W8PeNow8Qzq598WbM.woff2",
+      "weight": 850,
+      "style": "normal",
+      "cssVariable": "--font-coolvetica-heavy",
+      "usage": "Hero titles, giant display text, footer branding, preloader"
+    },
+    "coolveticaCondensed": {
+      "family": "Coolvetica Condensed",
+      "src": "https://framerusercontent.com/assets/gWeZipkGhmVsJNrR7HmYiR0GLY.woff2",
+      "weight": 400,
+      "style": "normal",
+      "cssVariable": "--font-coolvetica-condensed",
+      "usage": "Navbar links, buttons, hero subtext"
+    },
+    "coolveticaRegular": {
+      "family": "Coolvetica",
+      "src": "https://framerusercontent.com/assets/gWeZipkGhmVsJNrR7HmYiR0GLY.woff2",
+      "weight": 400,
+      "style": "normal",
+      "cssVariable": "--font-coolvetica",
+      "usage": "Section headings (121px), service names (66px), section labels (18px), CTA text, star symbols"
+    },
+    "dmSans": {
+      "family": "DM Sans",
+      "provider": "Google Fonts",
+      "weights": [300, 400, 500],
+      "cssVariable": "--font-dm-sans",
+      "usage": "Body text, card descriptions, project names, portfolio tags"
+    },
+    "inter": {
+      "family": "Inter",
+      "provider": "Google Fonts",
+      "weight": 500,
+      "cssVariable": "--font-inter",
+      "usage": "Project showcase captions"
+    }
+  },
+  "colors": {
+    "primaryRed": {
+      "hex": "#9f0c09",
+      "usage": "Services background, footer text, footer links, section CTA"
+    },
+    "accentRed": {
+      "hex": "#d60000",
+      "usage": "Nav active state, strikethrough, selection highlight, hover accents"
+    },
+    "black": {
+      "hex": "#000000",
+      "usage": "Feature cards, text on light backgrounds"
+    },
+    "offBlack": {
+      "hex": "#1A1A1A",
+      "usage": "Preloader background, CTA buttons, body default"
+    },
+    "darkBrown": {
+      "hex": "#050304",
+      "usage": "Hero CTA button background"
+    },
+    "white": {
+      "hex": "#ffffff",
+      "usage": "Text on dark backgrounds, dividers on dark, section backgrounds"
+    },
+    "offWhite": {
+      "hex": "#F5F5F0",
+      "usage": "Cursor, particles, page background tint"
+    },
+    "lightGray": {
+      "hex": "#c7c7c7",
+      "usage": "Hero container, about container background"
+    },
+    "mediumGray": {
+      "hex": "#91908e",
+      "usage": "Project subtexts, project dividers"
+    }
+  },
+  "typography": {
+    "heroTitle": {
+      "font": "coolveticaHeavyCompressed",
+      "size": "367px",
+      "responsive": "clamp(60px, 25vw, 367px)",
+      "lineHeight": 0.8,
+      "color": "white"
+    },
+    "sectionHeading": {
+      "font": "coolveticaRegular",
+      "size": "121px",
+      "responsive": "clamp(40px, 10vw, 121px)",
+      "lineHeight": 0.839,
+      "color": "white"
+    },
+    "sectionLabel": {
+      "font": "coolveticaRegular",
+      "size": "18px",
+      "lineHeight": "normal",
+      "color": "inherit"
+    },
+    "serviceName": {
+      "font": "coolveticaRegular",
+      "size": "66px",
+      "responsive": "clamp(28px, 5vw, 66px)",
+      "lineHeight": "normal",
+      "color": "white"
+    },
+    "portfolioHeading": {
+      "font": "coolveticaRegular",
+      "size": "216px",
+      "responsive": "clamp(60px, 15vw, 216px)",
+      "lineHeight": 0.839,
+      "color": "white"
+    },
+    "footerBranding": {
+      "font": "coolveticaHeavyCompressed",
+      "size": "510px",
+      "responsive": "clamp(80px, 35vw, 510px)",
+      "letterSpacing": "-10.2px",
+      "color": "black"
+    },
+    "ctaText": {
+      "font": "coolveticaRegular",
+      "size": "48px",
+      "responsive": "clamp(24px, 4vw, 48px)",
+      "lineHeight": "83.4%",
+      "color": "primaryRed"
+    },
+    "bodyText": {
+      "font": "dmSans",
+      "weight": 500,
+      "size": "20px",
+      "lineHeight": 1.02,
+      "letterSpacing": "-0.2px",
+      "color": "black"
+    },
+    "cardTitle": {
+      "font": "dmSans",
+      "weight": 500,
+      "size": "28px",
+      "lineHeight": "31.01px",
+      "letterSpacing": "-0.56px",
+      "color": "white"
+    },
+    "cardDescription": {
+      "font": "dmSans",
+      "weight": 400,
+      "size": "18px",
+      "lineHeight": "24px",
+      "letterSpacing": "-0.18px",
+      "color": "white"
+    },
+    "navLink": {
+      "font": "coolveticaCondensed",
+      "size": "20px",
+      "color": "white"
+    },
+    "projectCaption": {
+      "font": "inter",
+      "weight": 500,
+      "size": "24px",
+      "lineHeight": "33.12px",
+      "letterSpacing": "-1.44px",
+      "color": "white"
+    },
+    "tagPill": {
+      "font": "dmSans",
+      "weight": 500,
+      "size": "11px",
+      "letterSpacing": "-0.18px",
+      "color": "black"
+    }
+  },
+  "spacing": {
+    "sectionPaddingX": "75px",
+    "sectionPaddingXMobile": "20px",
+    "sectionPaddingXTablet": "40px",
+    "servicesPanelPadding": "55px",
+    "contentMaxWidth": "1440px",
+    "navMaxWidth": "1318px"
+  },
+  "sections": [
+    {
+      "id": "hero",
+      "name": "Hero",
+      "height": "100vh",
+      "background": "lightGray"
+    },
+    {
+      "id": "about",
+      "name": "About Us",
+      "number": "02",
+      "height": "736px",
+      "background": "white"
+    },
+    {
+      "id": "services",
+      "name": "Services",
+      "number": "03",
+      "height": "736px",
+      "background": "primaryRed"
+    },
+    {
+      "id": "portfolio",
+      "name": "Our Work",
+      "number": "04",
+      "height": "auto",
+      "background": "white"
+    },
+    {
+      "id": "projects",
+      "name": "Projects Showcase",
+      "height": "auto",
+      "background": "black"
+    },
+    {
+      "id": "why-choose-us",
+      "name": "Why Choose Us",
+      "number": "05",
+      "height": "auto",
+      "background": "black"
+    },
+    {
+      "id": "footer",
+      "name": "Footer",
+      "height": "auto",
+      "background": "white"
+    }
+  ],
+  "effects": {
+    "glassmorphicPill": {
+      "backdropBlur": "2.5px",
+      "background": "rgba(255, 255, 255, 0.75)",
+      "borderRadius": "100px"
+    },
+    "filmGrain": {
+      "opacity": 0.04,
+      "mixBlendMode": "overlay",
+      "animation": "grain-shift 0.3s steps(3) infinite"
+    },
+    "customCursor": {
+      "dotSize": "8px",
+      "ringSize": "40px",
+      "ringExpandedSize": "64px",
+      "mixBlendMode": "difference"
+    }
+  },
+  "breakpoints": {
+    "mobile": "375px",
+    "tablet": "768px",
+    "desktop": "1024px",
+    "wide": "1440px"
+  }
+}
