@@ -15,11 +15,28 @@ function MagneticButton({ children }: { children: string }) {
   const [isHovered, setIsHovered] = useState(false);
   const [key, setKey] = useState(0);
 
+  const handleClick = (e: React.MouseEvent<HTMLButtonElement>) => {
+    const target = document.querySelector("#work");
+    if (target) {
+      e.preventDefault();
+      target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+
+      const observer = new IntersectionObserver((entries) => {
+        if (entries[0].isIntersecting) {
+          observer.disconnect();
+        }
+      }, { threshold: 0.47 });
+
+      observer.observe(target);
+    }
+  };
+
   return (
     <button
       className="bg-off-black text-off-white px-[38px] py-[14px] rounded-[30px] text-[24px] tracking-wider transition-all duration-500 hover:bg-[#D60000] hover:mix-blend-color-burn pointer-events-auto overflow-hidden md:min-w-[240px] font-coolvetica-condensed"
       onMouseEnter={() => { setIsHovered(true); setKey(k => k + 1); }}
       onMouseLeave={() => setIsHovered(false)}
+      onClick={handleClick}
     >
       {isHovered ? (
         <TextRoll key={key} duration={0.25} transition={{ ease: [0.32, 0.72, 0, 1] }} exitClassName="text-off-white">

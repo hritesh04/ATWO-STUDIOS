@@ -44,10 +44,10 @@ export default function Footer() {
       {/* Giant branding text */}
       <motion.div
         className="w-full mt-16 lg:mt-20 overflow-hidden"
-        initial={{ opacity: 0 }}
-        whileInView={{ opacity: 1 }}
-        viewport={{ once: true }}
-        transition={{ duration: 1, delay: 0.3 }}
+        initial={{ opacity: 0, x: 100 }}
+        whileInView={{ opacity: 1, x: 0 }}
+        viewport={{ margin: '0px' }}
+        transition={{ duration: 1, delay: 0.3, ease: [0.22, 1, 0.36, 1] }}
       >
         <h2
           className="text-[33.5vw] text-black leading-[0.8] whitespace-nowrap select-none w-full text-center"

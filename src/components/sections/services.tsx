@@ -17,20 +17,32 @@ export default function Services() {
   const [expandedService, setExpandedService] = useState<string | null>(null);
 
   return (
-    <section id="services" className="relative w-full h-auto lg:h-[736px] flex flex-col lg:flex-row overflow-hidden">
+    <section id="services" className="relative w-full h-auto lg:h-[736px] flex flex-col lg:flex-row overflow-hidden bg-primary-red">
       {/* Left — Background image */}
-      <div className="relative w-full lg:w-1/2 h-[400px] lg:h-full">
+      <motion.div 
+        className="relative h-[400px] lg:h-full overflow-hidden"
+        initial={{ width: "100%" }}
+        whileInView={{ width: "50%" }}
+        viewport={{ amount: 0.3 }}
+        transition={{ type: "tween", duration: 1.2, ease: [0.7, 0.5, 1, 1] }}
+      >
         <Image
           src="/images/services-bg.jpg"
           alt="Services visual"
           fill
-          sizes="(max-width: 1024px) 100vw, 50vw"
+          sizes="100vw"
           className="object-cover"
         />
-      </div>
+      </motion.div>
 
       {/* Right — Red panel */}
-      <div className="relative w-full lg:w-1/2 bg-primary-red px-5 md:px-10 lg:px-[55px] py-12 lg:py-[55px]">
+      <motion.div 
+        className="relative h-full bg-primary-red px-5 md:px-10 lg:px-[55px] py-12 lg:py-[55px]"
+        initial={{ flexBasis: "0%", opacity: 0, x: 100 }}
+        whileInView={{ flexBasis: "50%", opacity: 1, x: 0 }}
+        viewport={{ amount: 0.2 }}
+        transition={{ duration: 1, delay: 0.2, ease: [0.22, 1, 0.36, 1] }}
+      >
         <SectionHeader label="SERVICES" number="03" dark className="mb-10" />
 
         <div className="flex flex-col gap-1 mt-4">
@@ -38,10 +50,10 @@ export default function Services() {
             <motion.div
               key={service.name}
               className="relative text-left"
-              initial={{ opacity: 0, x: 40 }}
+              initial={{ opacity: 0, x: 20 }}
               whileInView={{ opacity: 1, x: 0 }}
-              viewport={{ margin: '-50px' }}
-              transition={{ duration: 0.6, delay: i * 0.1, ease: [0.22, 1, 0.36, 1] }}
+              // viewport={{ once: true }}
+              transition={{ duration: 0.4, delay: 1.2 + (i * 0.1), ease: [0.22, 1, 0.36, 1] }}
             >
               <span 
                 className="text-[66px] text-white leading-[0.9] cursor-pointer"
@@ -63,7 +75,7 @@ export default function Services() {
                     animate={{ height: "auto", opacity: 1 }}
                     exit={{ height: 0, opacity: 0 }}
                     style={{ overflow: "hidden" }}
-                    transition={{ duration: 0.3, ease: "easeInOut" }}
+                    transition={{ duration: 0.5, ease: "easeInOut" }}
                   >
                     <div className='grid md:grid-cols-3 gap-8 justify-between m-4 overflow-hidden'>
                       <div className='col-span-2'>
@@ -82,7 +94,7 @@ export default function Services() {
             </motion.div>
           ))}
         </div>
-      </div>
+      </motion.div>
     </section>
   );
 }

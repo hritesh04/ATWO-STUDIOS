@@ -73,9 +73,9 @@ export default function Navbar({ loading, isScrolled }: NavbarProps) {
         <Image
           src="/images/a2-logo.png"
           alt="ATWO Studios Logo"
-          width={30}
-          height={24}
-          className="w-auto h-[24px] object-contain shrink-0"
+          width={48}
+          height={32}
+          className="w-auto h-[32px] object-contain shrink-0"
           referrerPolicy="no-referrer"
           />
         </MagneticLink>

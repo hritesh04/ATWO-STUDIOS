@@ -15,10 +15,10 @@ export default function About() {
         {/* Image first in DOM = paints first = behind text */}
         <motion.div
           className="relative lg:absolute lg:right-0 lg:top-0 lg:bottom-0 w-full lg:w-[50%] h-[500px] lg:h-full order-2 lg:order-none"
-          initial={{ opacity: 0, x: 40 }}
+          initial={{ opacity: 0, x: -900 }}
           whileInView={{ opacity: 1, x: 0 }}
           viewport={{ margin: '-100px' }}
-          transition={{ duration: 1, delay: 0.3, ease: [0.22, 1, 0.36, 1] }}
+          transition={{ duration: 1.5, delay: 0.3, ease: [0.22, 1, 0.36, 1] }}
         >
           <Image
             src="/images/about-model.jpg"
@@ -37,10 +37,10 @@ export default function About() {
               fontFamily: '"Coolvetica Regular", Coolvetica, sans-serif',
               mixBlendMode: 'difference',
             }}
-            initial={{ opacity: 0 }}
-            whileInView={{ opacity: 1 }}
+            initial={{ opacity: 0, x: -100 }}
+            whileInView={{ opacity: 1, x: 0 }}
             viewport={{ margin: '-100px' }}
-            transition={{ duration: 0.8, delay: 0.6, ease: [0.22, 1, 0.36, 1] }}
+            transition={{ duration: 1, delay: 0.4, ease: [0.22, 1, 0.36, 1] }}
           >
             INSIDE<br />ATWO STUDIOS
           </motion.h2>
@@ -51,7 +51,7 @@ export default function About() {
             initial={{ opacity: 0, y: 30 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ margin: '-100px' }}
-            transition={{ duration: 0.8, delay: 0.8, ease: [0.22, 1, 0.36, 1] }}
+            transition={{ duration: 0.4, delay: 0.4, ease: [0.22, 1, 0.36, 1] }}
           >
             Ideas run the show. We create ads, films, and brand visuals that look like full productions – minus the rented studios, camera, crews and production chaos. We are less interested in how things are traditionally done and more obsessed with how far an idea can go. The results feel like a real shoot. The Process? Let&apos;s just say it&apos;s unconventional.
           </motion.p>
