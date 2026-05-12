@@ -48,7 +48,7 @@ export default function WhyChooseUs() {
         </div>
 
         {/* Sticky Title */}
-        <div className="absolute inset-0 flex flex-col justify-start px-5 md:px-10 lg:px-[75px] pt-[22vh] z-10">
+        <div className="absolute inset-0 flex flex-col justify-start px-5 md:px-10 lg:px-[75px] pt-[22vh] z-40">
           <motion.h2
             className="font-coolvetica text-[clamp(40px,10vw,121px)] leading-[0.839] text-white tracking-tight"
             initial={{ opacity: 0, y: 40 }}
@@ -65,27 +65,29 @@ export default function WhyChooseUs() {
       <div className="relative z-20 w-full -mt-[100vh] pt-[60vh] pb-[20vh]">
         <div className="px-5 md:px-10 lg:px-[75px]">
           {/* Cards alternating left and right */}
-          <div className="flex flex-col gap-40 md:gap-64 lg:gap-80 max-w-[1300px] w-full mx-auto">
+          <div className="flex flex-col gap-60 max-w-[1300px] w-full mx-auto">
             {FEATURES.map((feature, i) => {
               const isRight = i % 2 !== 1;
               return (
                 <motion.div
                   key={feature.title}
-                  className={`bg-black/90 backdrop-blur-md border border-white/10 w-full md:w-[45%] lg:w-[40%] p-8 lg:p-8 flex flex-col ${isRight ? 'md:self-end' : 'md:self-start'}`}
-                  style={{ minHeight: 400 }}
+                  className={`bg-black backdrop-blur-md border border-white/10 w-full md:w-[30%] p-4 grid gap-0 ${isRight ? 'md:self-end' : 'md:self-start'}`}
+                  style={{ minHeight: 440 }}
                   initial={{ opacity: 0, y: 200 }}
                   whileInView={{ opacity: 1, y: 0 }}
-                  viewport={{ margin: '-100px' }}
-                  transition={{ duration: 1, ease: [0.22, 1, 0.36, 1] }}
+                  viewport={{ margin: "-80% 0px 0px 0px" }}
+                  transition={{ duration: 1.2, ease: [0.76, 0, 0.24, 1] }}
                 >
-                  <span className="font-coolvetica text-white text-[50px] leading-none mb-4">✦</span>
-                  <h3 className="font-[var(--font-dm-sans)] font-medium text-[clamp(22px,2vw,28px)] text-white leading-tight tracking-tight mb-6">
+                  <div className='flex gap-4 items-center border border-black justify-center'>
+                  <span className="font-coolvetica text-[50px] leading-none text-center text-white">✦</span>
+                  <h3 className="font-[var(--font-dm-sans)] font-medium text-[clamp(22px,2vw,28px)] leading-tight tracking-tight text-white">
                     {feature.title}
                   </h3>
-                  <div className="w-full h-px bg-white/30 mb-6" />
-                  <p className="font-[var(--font-dm-sans)] text-[clamp(14px,1.2vw,18px)] text-white/80 leading-relaxed tracking-tight">
+                  </div>
+                  <div className="w-full h-px bg-white/80" />
+                  <div className="font-medium text-xl leading-relaxed tracking-tight border border-black text-center p-4 flex items-start justify-center text-white">
                     {feature.description}
-                  </p>
+                  </div>
                 </motion.div>
               );
             })}

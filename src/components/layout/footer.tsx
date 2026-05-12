@@ -31,34 +31,41 @@ export default function Footer() {
           BOOK A CALL
         </a>
         <a href="mailto:ATWOSTUDIOS@CONTACT.COM" className="font-coolvetica text-[22px] text-primary-red underline hover:opacity-70 transition-opacity" data-hover>
-          ATWOSTUDIOS@CONTACT.COM
+          atwoiostudios@gmail.com
         </a>
         <a href="#" className="font-coolvetica text-[22px] text-primary-red hover:opacity-70 transition-opacity" data-hover>
           PORTFOLIO
         </a>
-        <a href="#" className="font-coolvetica text-[22px] text-primary-red hover:opacity-70 transition-opacity" data-hover>
+        <a href="https://www.instagram.com/atwo.io?igsh=dWh6Z3I2am10b3U0&utm_source=qr" target='blank' className="font-coolvetica text-[22px] text-primary-red hover:opacity-70 transition-opacity" data-hover>
           INSTAGRAM
         </a>
       </motion.div>
 
       {/* Giant branding text */}
-      <motion.div
-        className="w-full mt-16 lg:mt-20 overflow-hidden"
-        initial={{ opacity: 0, x: 100 }}
-        whileInView={{ opacity: 1, x: 0 }}
-        viewport={{ margin: '0px' }}
-        transition={{ duration: 1, delay: 0.3, ease: [0.22, 1, 0.36, 1] }}
-      >
-        <h2
-          className="text-[33.5vw] text-black leading-[0.8] whitespace-nowrap select-none w-full text-center"
-          style={{
-            fontFamily: '"Coolvetica Heavy Compressed", "Coolvetica Compressed", "Coolvetica", sans-serif',
-            letterSpacing: '-0.02em'
+      <div className="w-full mt-16 lg:mt-20 overflow-hidden whitespace-nowrap">
+        <motion.div
+          className="flex w-max"
+          animate={{ x: ["0%", "-50%"] }}
+          transition={{
+            duration: 30,
+            repeat: Infinity,
+            ease: "linear",
           }}
         >
-          ATWO STUDIOS
-        </h2>
-      </motion.div>
+          {[1, 2, 3, 4].map((i) => (
+            <h2
+              key={i}
+              className="text-[33.5vw] text-black leading-[0.8] whitespace-nowrap select-none px-8"
+              style={{
+                fontFamily: '"Coolvetica Heavy Compressed", "Coolvetica Compressed", "Coolvetica", sans-serif',
+                letterSpacing: '-0.02em'
+              }}
+            >
+              ATWO STUDIOS
+            </h2>
+          ))}
+        </motion.div>
+      </div>
 
       {/* Bottom bar */}
       <div className="flex flex-wrap items-center justify-between gap-4 px-5 md:px-10 lg:px-[138px] py-8 lg:py-10">

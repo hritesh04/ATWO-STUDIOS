@@ -24,10 +24,10 @@ export default function Services() {
         initial={{ width: "100%" }}
         whileInView={{ width: "50%" }}
         viewport={{ amount: 0.3 }}
-        transition={{ type: "tween", duration: 1.2, ease: [0.7, 0.5, 1, 1] }}
+        transition={{ type: "tween", duration: 1.2, ease: [0.76, 0, 0.24, 1] }}
       >
         <Image
-          src="/images/services-bg.jpg"
+          src="/images/services-bg.png"
           alt="Services visual"
           fill
           sizes="100vw"
@@ -37,9 +37,9 @@ export default function Services() {
 
       {/* Right — Red panel */}
       <motion.div 
-        className="relative h-full bg-primary-red px-5 md:px-10 lg:px-[55px] py-12 lg:py-[55px]"
-        initial={{ flexBasis: "0%", opacity: 0, x: 100 }}
-        whileInView={{ flexBasis: "50%", opacity: 1, x: 0 }}
+        className="relative h-full bg-primary-red"
+        initial={{ width: "0%", opacity: 0, x: 100 }}
+        whileInView={{ width: "50%", opacity: 1, x: 0, padding: "55px" }}
         viewport={{ amount: 0.2 }}
         transition={{ duration: 1, delay: 0.2, ease: [0.22, 1, 0.36, 1] }}
       >
@@ -50,10 +50,9 @@ export default function Services() {
             <motion.div
               key={service.name}
               className="relative text-left"
-              initial={{ opacity: 0, x: 20 }}
+              initial={{ opacity: 0, x: 20}}
               whileInView={{ opacity: 1, x: 0 }}
-              // viewport={{ once: true }}
-              transition={{ duration: 0.4, delay: 1.2 + (i * 0.1), ease: [0.22, 1, 0.36, 1] }}
+              transition={{ duration: 0.4, delay: 1.0 + (i * 0.1), ease: [0.22, 1, 0.36, 1] }}
             >
               <span 
                 className="text-[66px] text-white leading-[0.9] cursor-pointer"

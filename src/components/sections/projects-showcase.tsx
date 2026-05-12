@@ -35,7 +35,7 @@ function Card({ project, i, progress, range }: { project: ShowcaseProject; i: nu
   const opacity = 1;
 
   return (
-    <div key={project.name} ref={container} className="h-[120vh] w-full flex items-start justify-center sticky top-0 pointer-events-none">
+    <div key={project.name} ref={container} className=" h-[80vh] md:h-[120vh] w-full flex items-start justify-center sticky top-0 pointer-events-none">
       <motion.div
         style={{ scale, y, opacity, top: '12vh' }}
         className="flex flex-col w-full lg:flex-row items-start gap-6 lg:gap-0 lg:min-h-[578px] p-6 rounded-[24px] lg:rounded-[40px] pointer-events-auto"
@@ -52,7 +52,7 @@ function Card({ project, i, progress, range }: { project: ShowcaseProject; i: nu
         </div>
 
         {/* Right image */}
-        <div className="relative w-full aspect-[1039/578] overflow-hidden rounded-xl lg:rounded-2xl shadow-2xl">
+        <div className="relative w-full aspect-[1039/578] overflow-hidden rounded-xl lg:rounded-3xl shadow-2xl">
         {
           project.video !== "" ?
           <video 
