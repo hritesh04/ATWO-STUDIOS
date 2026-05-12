@@ -30,7 +30,7 @@ const FEATURES: FeatureCard[] = [
 
 export default function WhyChooseUs() {
   return (
-    <section id="why-choose-us" className="relative w-full bg-black overflow-hidden h-[210vh] md:h-[270vh]">
+    <section id="why-choose-us" className="relative w-full bg-black overflow-hidden h-[220vh] md:h-[270vh]">
       {/* Top background image */}
       <div className="relative w-full h-full">
         <Image

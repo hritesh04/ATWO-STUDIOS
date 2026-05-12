@@ -16,9 +16,9 @@ function MagneticLink({ children, className, href, postNav }: { children: string
     if (target) {
       e.preventDefault();
       target.scrollIntoView({ behavior: 'smooth', block: 'start' });
-      setTimeout(() => {
-        postNav?.();
-      }, 400)
+      // setTimeout(() => {
+      //   postNav?.();
+      // }, 400)
     }
   };
 

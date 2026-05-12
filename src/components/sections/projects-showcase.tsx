@@ -18,7 +18,7 @@ const PROJECTS: ShowcaseProject[] = [
 
 export default function ProjectsShowcase() {
   return (
-    <section className="relative w-full bg-black overflow-hidden h-[180vh] md:h-[350vh]">
+    <section className="relative w-full bg-black overflow-hidden h-[200vh] md:h-[350vh]">
       {/* Top atmospheric image */}
       <div className="relative w-full h-[300px] md:h-[500px] lg:h-[611px]">
         <Image
