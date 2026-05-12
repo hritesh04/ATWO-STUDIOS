@@ -42,7 +42,7 @@ export default function Home() {
       <CustomCursor />
       <div className="grain-overlay" />
 
-      <div className="relative w-full bg-off-white overflow-x-hidden font-coolvetica-condensed selection:bg-[#D60000] selection:text-off-white">
+      <div className="relative w-full bg-off-white overflow-clip font-coolvetica-condensed selection:bg-[#D60000] selection:text-off-white">
         <Navbar loading={loading} isScrolled={isScrolled} />
 
         <main>

@@ -9,6 +9,7 @@ interface Project {
   title: string;
   image: string;
   tags: string[];
+  link: string;
 }
 
 const PROJECTS: Project[] = [
@@ -16,21 +17,25 @@ const PROJECTS: Project[] = [
     title: 'Prada — Tailored Luxury Campaign',
     image: '/images/demo-prada.jpg',
     tags: ['Luxury', 'Fashion', 'Creative Direction'],
+    link: "https://www.instagram.com/p/DWJDaRlDY5B/?igsh=MWVncG1idXMwazA5Yg==",
   },
   {
     title: 'Rhode — Beauty Campaign',
     image: '/images/demo-rhode.jpg',
     tags: ['Beauty', 'Skin', 'Commercial'],
+    link:"https://www.instagram.com/p/DVBmOJkifrL/?igsh=bXhicnU1cm8wbG54",
   },
   {
     title: 'Ornate Flesh — Artistic Campaign',
     image: '/images/demo-ornate-1.jpg',
     tags: ['Concept', 'Experimental', 'Form', 'Styling'],
+    link:"https://www.instagram.com/p/DWg4P3zmJEx/?img_index=2&igsh=MW03Y2VoOGE2aGtxMA==",
   },
   {
     title: 'Kartik Research — Sustainable Fashion Campaign',
     image: '/images/demo-ornate-2.jpg',
     tags: ['Sustainable', 'Textile', 'Narrative'],
+    link:"https://www.instagram.com/p/DVL6Drmk2h0/?igsh=MmZlbTN2eTVrdWo3",
   },
 ];
 
@@ -79,6 +84,7 @@ export default function Portfolio() {
               viewport={{ once: true, margin: '-80px' }}
               transition={{ duration: 0.7, delay: i * 0.1, ease: [0.22, 1, 0.36, 1] }}
             >
+              <a href={project.link} target='blank'>
               <Image
                 src={project.image}
                 alt={project.title}
@@ -113,6 +119,7 @@ export default function Portfolio() {
                   ))}
                 </div>
               </div>
+              </a>
             </motion.div>
           ))}
         </div>
