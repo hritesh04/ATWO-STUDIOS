@@ -19,20 +19,20 @@ const FEATURES: FeatureCard[] = [
     description: 'No rented studios. No camera crews. We create visuals that feel like full productions — without the usual production chaos.',
   },
   {
-    title: 'Fast & Flexible',
-    description: 'Without traditional production barriers, ideas move faster. We turn concepts into finished visuals quickly and efficiently.',
-  },
-  {
     title: 'Creative Direction Focus',
     description: "Tools are accessible to everyone. Direction isn't. We focus on shaping ideas, storytelling, and visual language that make brands stand out.",
+  },
+  {
+    title: 'Fast & Flexible',
+    description: 'Without traditional production barriers, ideas move faster. We turn concepts into finished visuals quickly and efficiently.',
   },
 ];
 
 export default function WhyChooseUs() {
   return (
-    <section id="why-choose-us" className="relative w-full bg-black overflow-hidden">
+    <section id="why-choose-us" className="relative w-full bg-black overflow-hidden h-[210vh] md:h-[270vh]">
       {/* Top background image */}
-      <div className="relative w-full h-[300px] md:h-[500px] lg:h-[801px]">
+      <div className="relative w-full h-full">
         <Image
           src="/images/why-choose-bg.jpg"
           alt="Why choose us atmosphere"
@@ -42,14 +42,14 @@ export default function WhyChooseUs() {
         />
         {/* Header overlay */}
         <div className="absolute top-0 left-0 w-full px-5 md:px-10 lg:px-[75px] pt-12 lg:pt-[62px] z-10 mix-blend-difference">
-          <SectionHeader label="PORTFOLIO" number="05" dark />
+          <SectionHeader label="BENEFITS" number="05" dark />
         </div>
       </div>
 
       {/* Content */}
-      <div className="px-5 md:px-10 lg:px-[75px] py-12 lg:py-16">
+      <div className="px-5 md:px-10 lg:px-[75px] py-12 lg:py-16 absolute top-15 left-0 w-full">
         <motion.h2
-          className="font-coolvetica text-[clamp(40px,10vw,121px)] leading-[0.839] text-white tracking-tight mb-12 lg:mb-20"
+          className="font-coolvetica text-[clamp(40px,10vw,121px)] leading-[0.839] text-black tracking-tight mb-12 lg:mb-20"
           initial={{ opacity: 0, y: 40 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true, margin: '-100px' }}
@@ -58,20 +58,19 @@ export default function WhyChooseUs() {
           WHY CHOOSE US?
         </motion.h2>
 
-        {/* Cards in staggered grid */}
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-6 max-w-[1300px]">
+        {/* Cards alternating left and right */}
+        <div className="flex flex-col gap-12 lg:gap-24 max-w-[1300px] w-full mx-auto">
           {FEATURES.map((feature, i) => {
-            const isRight = i % 2 === 1;
-            const isBottom = i >= 2;
+            const isRight = i % 2 === 0;
             return (
               <motion.div
                 key={feature.title}
-                className={`bg-black border border-white/10 w-full md:max-w-[368px] p-8 lg:p-12 flex flex-col ${isRight ? 'md:ml-auto' : ''} ${isBottom ? 'md:-mt-20' : ''}`}
+                className={`bg-black border border-white/10 w-full md:w-[45%] lg:w-[40%] p-8 lg:p-12 flex flex-col ${isRight ? 'md:self-end' : 'md:self-start'}`}
                 style={{ minHeight: 380 }}
-                initial={{ opacity: 0, y: 50, scale: 0.95 }}
-                whileInView={{ opacity: 1, y: 0, scale: 1 }}
-                viewport={{ once: true, margin: '-80px' }}
-                transition={{ duration: 0.7, delay: i * 0.12, ease: [0.22, 1, 0.36, 1] }}
+                initial={{ opacity: 0, y: 200 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ margin: '-100px' }}
+                transition={{ duration: 0.8, ease: [0.22, 1, 0.36, 1] }}
               >
                 <span className="font-coolvetica text-white text-[50px] leading-none mb-4">✦</span>
                 <h3 className="font-[var(--font-dm-sans)] font-medium text-[clamp(22px,2vw,28px)] text-white leading-tight tracking-tight mb-6">

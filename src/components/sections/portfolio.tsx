@@ -36,7 +36,7 @@ const PROJECTS: Project[] = [
 
 export default function Portfolio() {
   return (
-    <section id="portfolio" className="relative w-full bg-white py-10 lg:py-[40px]">
+    <section id="work" className="relative w-full bg-white py-10 lg:py-[40px]">
       <div className="px-5 md:px-10 lg:px-[75px]">
         <SectionHeader label="PORTFOLIO" number="04" />
 

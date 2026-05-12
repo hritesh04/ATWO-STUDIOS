@@ -4,9 +4,9 @@ import { motion } from 'motion/react';
 
 export default function Footer() {
   return (
-    <footer id="footer" className="relative w-full bg-white overflow-hidden">
+    <footer id="contact-us" className="relative w-full bg-white overflow-hidden">
       {/* CTA Section */}
-      <div className="px-5 md:px-10 lg:px-[138px] pt-16 lg:pt-24">
+      <div className="px-5 md:px-10 lg:px-[138px] pt-16 lg:pt-20">
         <motion.p
           className="font-coolvetica text-[48px] text-primary-red max-w-[440px]"
           style={{ lineHeight: 'normal', letterSpacing: '0' }}
@@ -21,7 +21,7 @@ export default function Footer() {
 
       {/* Links row */}
       <motion.div
-        className="flex flex-wrap items-center gap-6 md:gap-0 md:justify-between px-5 md:px-10 lg:px-[138px] mt-16 lg:mt-24"
+        className="flex flex-wrap items-center gap-6 md:gap-0 md:justify-between px-5 md:px-10 lg:px-[138px] mt-16 lg:mt-20"
         initial={{ opacity: 0 }}
         whileInView={{ opacity: 1 }}
         viewport={{ once: true }}
@@ -43,7 +43,7 @@ export default function Footer() {
 
       {/* Giant branding text */}
       <motion.div
-        className="w-full mt-16 lg:mt-24 overflow-hidden"
+        className="w-full mt-16 lg:mt-20 overflow-hidden"
         initial={{ opacity: 0 }}
         whileInView={{ opacity: 1 }}
         viewport={{ once: true }}

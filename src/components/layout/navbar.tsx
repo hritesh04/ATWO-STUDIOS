@@ -6,21 +6,34 @@ import Image from 'next/image';
 import { Menu, X } from 'lucide-react';
 import { TextRoll } from '@/src/components/ui/text-roll';
 
-function MagneticLink({ children, className, href }: { children: string; className?: string; href?: string }) {
+function MagneticLink({ children, className, href, postNav }: { children: string | React.ReactNode; className?: string; href?: string, postNav?: () => void }) {
   const [isHovered, setIsHovered] = useState(false);
   const [key, setKey] = useState(0);
+
+  const handleClick = (e: React.MouseEvent<HTMLAnchorElement>) => {
+    if (!href || !href.startsWith('#')) return;
+    const target = document.querySelector(href);
+    if (target) {
+      e.preventDefault();
+      target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+      setTimeout(() => {
+        postNav?.();
+      }, 400)
+    }
+  };
 
   return (
     <a
       href={href || '#'}
       className={`nav-magnetic ${className || ''}`}
+      onClick={handleClick}
       onMouseEnter={() => { setIsHovered(true); setKey(k => k + 1); }}
       onMouseLeave={() => setIsHovered(false)}
     >
       {isHovered ? (
-        <TextRoll key={key} duration={0.25}>{children}</TextRoll>
+        typeof children === 'string' ? <TextRoll key={key} duration={0.25}>{children}</TextRoll> : children
       ) : (
-        <span>{children}</span>
+        typeof children === 'string' ? <span>{children}</span> : children
       )}
     </a>
   );
@@ -46,6 +59,7 @@ export default function Navbar({ loading, isScrolled }: NavbarProps) {
       transition={{ duration: 0.8, delay: 1.2, ease: [0.22, 1, 0.36, 1] }}
     >
       <div className="flex items-center w-full justify-between transition-all duration-500">
+        <MagneticLink href="#hero">
         <Image
           src="/images/a2-logo.png"
           alt="ATWO Studios Logo"
@@ -53,14 +67,15 @@ export default function Navbar({ loading, isScrolled }: NavbarProps) {
           height={24}
           className="w-auto h-[24px] object-contain shrink-0"
           referrerPolicy="no-referrer"
-        />
+          />
+        </MagneticLink>
 
         <div className={`hidden md:flex flex-grow items-center transition-all duration-500 ${isScrolled ? 'justify-evenly px-4 xl:px-8' : 'justify-start'}`}>
           <div className={`hidden md:block text-off-black text-[24px] tracking-wide transition-all duration-500 ${isScrolled ? '' : 'ml-6 md:ml-12'}`}>
-            <MagneticLink href="#about">ABOUT US</MagneticLink>
+            <MagneticLink href="#about-us">ABOUT US</MagneticLink>
           </div>
           <div className={`hidden md:block text-off-black text-[24px] tracking-wide transition-all duration-500 ${isScrolled ? '' : 'ml-8'}`}>
-            <MagneticLink href="#portfolio">WORK</MagneticLink>
+            <MagneticLink href="#work">WORK</MagneticLink>
           </div>
           <div className={`transition-all duration-500 ${isScrolled ? 'hidden' : 'flex-grow'}`} />
           <div className="hidden md:block text-off-black text-[24px] tracking-wide transition-all duration-500">
@@ -69,7 +84,7 @@ export default function Navbar({ loading, isScrolled }: NavbarProps) {
         </div>
 
         <div className={`hidden md:flex items-center shrink-0 text-off-black text-[24px] tracking-wide transition-all duration-500 ${isScrolled ? '' : 'ml-8'}`}>
-          <MagneticLink href="#footer">CONTACT US</MagneticLink>
+          <MagneticLink href="#contact-us">CONTACT US</MagneticLink>
         </div>
 
         <div className="md:hidden flex items-center shrink-0">
@@ -94,7 +109,9 @@ export default function Navbar({ loading, isScrolled }: NavbarProps) {
           >
             {['ABOUT US', 'WORK', 'SERVICES', 'CONTACT US'].map((item) => (
               <div key={item} className="text-off-black text-[24px] tracking-wide w-full text-center py-2 rounded-lg transition-colors">
-                <MagneticLink href={`#${item.toLowerCase().replace(' ', '-')}`}>{item}</MagneticLink>
+                <MagneticLink href={`#${item.toLowerCase().replace(' ', '-')}`}
+                postNav={()=>setIsMobileMenuOpen(false)}
+                >{item}</MagneticLink>
               </div>
             ))}
           </motion.div>

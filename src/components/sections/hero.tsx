@@ -17,7 +17,7 @@ function MagneticButton({ children }: { children: string }) {
 
   return (
     <button
-      className="bg-off-black text-off-white px-[38px] py-[14px] rounded-[30px] text-[24px] tracking-wider transition-all duration-500 hover:bg-[#D60000] hover:mix-blend-color-burn pointer-events-auto overflow-hidden min-w-[240px] font-coolvetica-condensed"
+      className="bg-off-black text-off-white px-[38px] py-[14px] rounded-[30px] text-[24px] tracking-wider transition-all duration-500 hover:bg-[#D60000] hover:mix-blend-color-burn pointer-events-auto overflow-hidden md:min-w-[240px] font-coolvetica-condensed"
       onMouseEnter={() => { setIsHovered(true); setKey(k => k + 1); }}
       onMouseLeave={() => setIsHovered(false)}
     >
@@ -88,7 +88,7 @@ export default function Hero({ loading, smoothProgress, mouseX, mouseY }: HeroPr
   const heroLetters = HERO_TEXT.split('');
 
   return (
-    <section className="relative w-full h-screen overflow-hidden bg-light-gray">
+    <section id='hero' className="relative w-full h-screen overflow-hidden bg-light-gray">
       <div className="absolute inset-y-0 left-0 w-full h-full">
         {/* Background with parallax */}
         <motion.div
