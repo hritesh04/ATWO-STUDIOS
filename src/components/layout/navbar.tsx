@@ -16,9 +16,17 @@ function MagneticLink({ children, className, href, postNav }: { children: string
     if (target) {
       e.preventDefault();
       target.scrollIntoView({ behavior: 'smooth', block: 'start' });
-      // setTimeout(() => {
-      //   postNav?.();
-      // }, 400)
+
+      if (postNav) {
+        const observer = new IntersectionObserver((entries) => {
+          if (entries[0].isIntersecting) {
+            observer.disconnect();
+            postNav();
+          }
+        }, { threshold: href === "#work" ? 0.47 : 0.9 });
+
+        observer.observe(target);
+      }
     }
   };
 
@@ -30,7 +38,9 @@ function MagneticLink({ children, className, href, postNav }: { children: string
       onMouseEnter={() => { setIsHovered(true); setKey(k => k + 1); }}
       onMouseLeave={() => setIsHovered(false)}
     >
-      {isHovered ? (
+      {postNav ? (
+        typeof children === 'string' ? <span>{children}</span> : children
+      ) : isHovered ? (
         typeof children === 'string' ? <TextRoll key={key} duration={0.25}>{children}</TextRoll> : children
       ) : (
         typeof children === 'string' ? <span>{children}</span> : children
