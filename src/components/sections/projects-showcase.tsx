@@ -39,7 +39,7 @@ function Card({ project, i, progress, range}: { project: ShowcaseProject; i: num
   const [isMuted, setIsMuted] = useState(true);
 
   return (
-    <div key={project.name} ref={container} className=" h-[80vh] md:h-[120vh] w-full flex items-start justify-center sticky top-0 pointer-events-none pt-24">
+    <div key={project.name} ref={container} className=" h-[80vh] md:h-[120vh] w-full md:w-[90%] flex items-start justify-center sticky top-0 pointer-events-none pt-28">
       <motion.div
         style={{ scale, y, opacity, top: '12vh' }}
         className="flex flex-col w-full lg:flex-row items-start gap-6 lg:gap-0 lg:min-h-[578px] p-6 rounded-[24px] lg:rounded-[40px] pointer-events-auto"
