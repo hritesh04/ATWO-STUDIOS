@@ -1,8 +1,9 @@
 "use client";
 
-import { useRef } from 'react';
+import { useRef, useState } from 'react';
 import { motion, useScroll, useTransform } from 'motion/react';
 import Image from 'next/image';
+import { Volume2Icon, VolumeXIcon } from 'lucide-react';
 
 interface ShowcaseProject {
   name: string;
@@ -14,8 +15,9 @@ interface ShowcaseProject {
 const PROJECTS: ShowcaseProject[] = [
   { name: 'GULLY', year: '2025', image: '/images/project-gully.jpg', video:'/videos/gully.mp4' },
   { name: 'ENOLA', year: '2025', image: '/images/project-enola-2.jpg',video:'/videos/enola.mp4' },
-  { name: 'PRADA', year: '2025', image: '/images/project-prada.jpg',video:'' },
+  { name: 'PRADA', year: '2025', image: '/images/project-prada.jpg', video:'/videos/kerala_home.mp4' },
   { name: 'ORNATE FLESH', year: '2025', image: '/images/project-ornate.jpg',video:'/videos/ornate.mp4' },
+  { name: 'GORILLAZ', year: '2025', image: '',video:'/videos/gorillaz.mp4' },
 ];
 
 function Card({ project, i, progress, range }: { project: ShowcaseProject; i: number; progress: any; range: number[] }) {
@@ -33,6 +35,12 @@ function Card({ project, i, progress, range }: { project: ShowcaseProject; i: nu
   );
 
   const opacity = 1;
+
+  const [isMuted, setIsMuted] = useState(true);
+
+  function handleVolume(){
+    setIsMuted(!isMuted);
+  }
 
   return (
     <div key={project.name} ref={container} className=" h-[80vh] md:h-[120vh] w-full flex items-start justify-center sticky top-0 pointer-events-none">
@@ -55,14 +63,26 @@ function Card({ project, i, progress, range }: { project: ShowcaseProject; i: nu
         <div className="relative w-full aspect-[1039/578] overflow-hidden rounded-xl lg:rounded-3xl shadow-2xl">
         {
           project.video !== "" ?
+          <>
           <video 
             src={project.video}
             autoPlay
-            muted
+            muted={isMuted}
             loop
             playsInline
             className="w-full h-full object-cover"
-          />
+            />
+            <button 
+              onClick={()=>setIsMuted(!isMuted)}
+              className="absolute top-4 right-4 md:top-8 md:right-8 z-20 p-2 rounded-full bg-black/20 hover:bg-black/40 backdrop-blur-sm transition-all group"
+            >
+              {isMuted ? (
+                <VolumeXIcon className='text-white' size={30} />
+              ) : (
+                <Volume2Icon className='text-white' size={30} />
+              )}
+            </button>
+          </>
           :
           <Image
             src={project.image}

@@ -52,7 +52,7 @@ export default function Services() {
               className="relative text-left"
               initial={{ opacity: 0, x: 20}}
               whileInView={{ opacity: 1, x: 0 }}
-              transition={{ duration: 0.4, delay: 1.0 + (i * 0.1), ease: [0.22, 1, 0.36, 1] }}
+              transition={{ duration: 0.4, delay: 1.0 + (i * 0.01), ease: [0.22, 1, 0.36, 1] }}
             >
               <span 
                 className="text-[66px] text-white leading-[0.9] cursor-pointer"
