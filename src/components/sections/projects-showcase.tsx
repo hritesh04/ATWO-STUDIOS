@@ -1,6 +1,6 @@
 "use client";
 
-import { useRef, useState } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import { motion, useScroll, useTransform } from 'motion/react';
 import Image from 'next/image';
 import { Volume2Icon, VolumeXIcon } from 'lucide-react';
@@ -20,10 +20,10 @@ const PROJECTS: ShowcaseProject[] = [
   { name: 'GORILLAZ', year: '2025', image: '',video:'/videos/gorillaz.mp4' },
 ];
 
-function Card({ project, i, progress, range }: { project: ShowcaseProject; i: number; progress: any; range: number[] }) {
+function Card({ project, i, progress, range}: { project: ShowcaseProject; i: number; progress: any; range: number[]}) {
   const container = useRef(null);
   
-  const sinkY = 180 - (i * 60);
+  const sinkY = 180 - (i * 80);
   const y = useTransform(progress, 
     [range[0], range[1], range[2], range[3]], 
     [700, 30, 30, sinkY]
@@ -31,19 +31,15 @@ function Card({ project, i, progress, range }: { project: ShowcaseProject; i: nu
   
   const scale = useTransform(progress,
     [range[0], range[1], range[2], range[3]],
-    [1, 1, 1, 0.6]
+    [1, 1, 1, 0.8]
   );
 
   const opacity = 1;
 
   const [isMuted, setIsMuted] = useState(true);
 
-  function handleVolume(){
-    setIsMuted(!isMuted);
-  }
-
   return (
-    <div key={project.name} ref={container} className=" h-[80vh] md:h-[120vh] w-full flex items-start justify-center sticky top-0 pointer-events-none">
+    <div key={project.name} ref={container} className=" h-[80vh] md:h-[120vh] w-full flex items-start justify-center sticky top-0 pointer-events-none pt-24">
       <motion.div
         style={{ scale, y, opacity, top: '12vh' }}
         className="flex flex-col w-full lg:flex-row items-start gap-6 lg:gap-0 lg:min-h-[578px] p-6 rounded-[24px] lg:rounded-[40px] pointer-events-auto"
@@ -99,14 +95,14 @@ function Card({ project, i, progress, range }: { project: ShowcaseProject; i: nu
 }
 
 export default function ProjectsShowcase() {
-  const container = useRef(null);
+  const projectsContainer = useRef(null);
   const { scrollYProgress } = useScroll({
-    target: container,
+    target: projectsContainer,
     offset: ['start start', 'end end']
   });
 
   return (
-    <section ref={container} className="relative w-full bg-black pt-[80vh]">
+    <section className="relative w-full bg-black pt-[80vh]">
       {/* Atmospheric background image */}
       <div className="absolute inset-0 pointer-events-none">
         <div className="sticky top-0 left-0 w-full h-screen">
@@ -122,7 +118,7 @@ export default function ProjectsShowcase() {
       </div>
 
       {/* Project entries */}
-      <div className="relative z-10 w-full px-5 md:px-10 flex flex-col items-center">
+      <div ref={projectsContainer} className="relative z-10 w-full px-5 md:px-10 flex flex-col items-center md:pb-18">
         {PROJECTS.map((project, i) => {
           const step = 1 / PROJECTS.length;
           const start = i * step;

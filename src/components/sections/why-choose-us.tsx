@@ -29,7 +29,7 @@ const FEATURES: FeatureCard[] = [
 
 export default function WhyChooseUs() {
   return (
-    <section id="why-choose-us" className="relative w-full bg-black h-[300vh] md:h-[450vh]">
+    <section id="why-choose-us" className="relative w-full bg-black h-[400vh]">
       {/* Sticky Background Video & Title */}
       <div className="sticky top-0 left-0 w-full h-screen overflow-hidden">
         <video
@@ -65,13 +65,13 @@ export default function WhyChooseUs() {
       <div className="relative z-20 w-full -mt-[100vh] pt-[60vh] pb-[20vh]">
         <div className="px-5 md:px-10 lg:px-[75px]">
           {/* Cards alternating left and right */}
-          <div className="flex flex-col gap-60 max-w-[1300px] w-full mx-auto">
+          <div className="flex flex-col gap-60 max-w-[1300px] w-full mx-auto items-center">
             {FEATURES.map((feature, i) => {
               const isRight = i % 2 !== 1;
               return (
                 <motion.div
                   key={feature.title}
-                  className={`bg-black backdrop-blur-md border border-white/10 w-full md:w-[30%] p-4 grid gap-0 ${isRight ? 'md:self-end' : 'md:self-start'}`}
+                  className={`bg-black backdrop-blur-md border border-white/10 w-[80%] md:w-[30%] p-4 grid gap-0 ${isRight ? 'md:self-end' : 'md:self-start'}`}
                   style={{ minHeight: 440 }}
                   initial={{ opacity: 0, y: 200 }}
                   whileInView={{ opacity: 1, y: 0 }}

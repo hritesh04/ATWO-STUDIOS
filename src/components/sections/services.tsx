@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'motion/react';
 import Image from 'next/image';
 import SectionHeader from '@/src/components/ui/section-header';
@@ -15,6 +15,14 @@ const SERVICES = [
 
 export default function Services() {
   const [expandedService, setExpandedService] = useState<string | null>(null);
+  const [isMd, setIsMd] = useState(false);
+
+  useEffect(() => {
+    const checkSize = () => setIsMd(window.innerWidth >= 768);
+    checkSize();
+    window.addEventListener('resize', checkSize);
+    return () => window.removeEventListener('resize', checkSize);
+  }, []);
 
   return (
     <section id="services" className="relative w-full h-auto lg:h-[736px] flex flex-col lg:flex-row overflow-hidden bg-primary-red">
@@ -22,7 +30,7 @@ export default function Services() {
       <motion.div 
         className="relative h-[400px] lg:h-full overflow-hidden"
         initial={{ width: "100%" }}
-        whileInView={{ width: "50%" }}
+        whileInView={{ width: isMd ? "50%" : "100%" }}
         viewport={{ amount: 0.3 }}
         transition={{ type: "tween", duration: 1.2, ease: [0.76, 0, 0.24, 1] }}
       >
@@ -37,9 +45,9 @@ export default function Services() {
 
       {/* Right — Red panel */}
       <motion.div 
-        className="relative h-full bg-primary-red"
-        initial={{ width: "0%", opacity: 0, x: 100 }}
-        whileInView={{ width: "50%", opacity: 1, x: 0, padding: "55px" }}
+        className="relative h-full bg-primary-red mb-24"
+        initial={isMd ? { width: "0%", opacity: 0, x: 100 } : { width: "100%", opacity: 0, y: 50 }}
+        whileInView={isMd ? { width: "50%", opacity: 1, x: 0, y:0, padding: "55px" } : { width: "100%", opacity: 1, y: 0, padding: "20px" }}
         viewport={{ amount: 0.2 }}
         transition={{ duration: 1, delay: 0.2, ease: [0.22, 1, 0.36, 1] }}
       >

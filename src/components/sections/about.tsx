@@ -1,12 +1,22 @@
 "use client";
 
+import { useState, useEffect } from 'react';
 import { motion } from 'motion/react';
 import Image from 'next/image';
 import SectionHeader from '@/src/components/ui/section-header';
 
 export default function About() {
+  const [isMd, setIsMd] = useState(false);
+
+  useEffect(() => {
+    const checkSize = () => setIsMd(window.innerWidth >= 768);
+    checkSize();
+    window.addEventListener('resize', checkSize);
+    return () => window.removeEventListener('resize', checkSize);
+  }, []);
+
   return (
-    <section id="about-us" className="relative w-full min-h-[736px] bg-white">
+    <section id="about-us" className="relative w-full min-h-[736px] bg-white overflow-hidden">
       <div className="px-5 md:px-10 lg:px-[75px] pt-12 lg:pt-[48px] relative z-10">
         <SectionHeader label="ABOUT US" number="02" />
       </div>
@@ -14,9 +24,9 @@ export default function About() {
       <div className="flex flex-col lg:flex-row w-full min-h-[660px] pb-12 lg:pb-0">
         <motion.div
           className="relative lg:absolute lg:right-0 lg:top-0 lg:bottom-0 w-full lg:w-[50%] h-[500px] lg:h-full order-2 lg:order-none"
-          initial={{ opacity: 0, x: -900 }}
+          initial={{ opacity: 0, x: isMd ? -900 : -50 }}
           whileInView={{ opacity: 1, x: 0 }}
-          viewport={{ margin: '-100px' }}
+          viewport={{ margin: isMd ? '-100px' : '-50px' }}
           transition={{ duration: 1.5, delay: 0.3, ease: [0.22, 1, 0.36, 1] }}
         >
           <Image
