@@ -15,25 +15,25 @@ interface Project {
 const PROJECTS: Project[] = [
   {
     title: 'Prada — Tailored Luxury Campaign',
-    image: '/images/demo-prada.jpg',
+    image: 'https://res.cloudinary.com/dcmbfe9at/image/upload/v1778693071/demo-prada_lzzgkc.jpg',
     tags: ['Luxury', 'Fashion', 'Creative Direction'],
     link: "https://www.instagram.com/p/DWJDaRlDY5B/?igsh=MWVncG1idXMwazA5Yg==",
   },
   {
     title: 'Rhode — Beauty Campaign',
-    image: '/images/demo-rhode.jpg',
+    image: 'https://res.cloudinary.com/dcmbfe9at/image/upload/v1778693073/demo-rhode_cevho0.jpg',
     tags: ['Beauty', 'Skin', 'Commercial'],
     link:"https://www.instagram.com/p/DVBmOJkifrL/?igsh=bXhicnU1cm8wbG54",
   },
   {
     title: 'Ornate Flesh — Artistic Campaign',
-    image: '/images/demo-ornate-1.jpg',
+    image: 'https://res.cloudinary.com/dcmbfe9at/image/upload/v1778692654/demo-ornate-1_w38vgx.png',
     tags: ['Concept', 'Experimental', 'Form', 'Styling'],
     link:"https://www.instagram.com/p/DWg4P3zmJEx/?img_index=2&igsh=MW03Y2VoOGE2aGtxMA==",
   },
   {
     title: 'Kartik Research — Sustainable Fashion Campaign',
-    image: '/images/demo-ornate-2.jpg',
+    image: 'https://res.cloudinary.com/dcmbfe9at/image/upload/v1778692651/demo-ornate-2_zl6ts5.png',
     tags: ['Sustainable', 'Textile', 'Narrative'],
     link:"https://www.instagram.com/p/DVL6Drmk2h0/?igsh=MmZlbTN2eTVrdWo3",
   },

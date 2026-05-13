@@ -32,7 +32,7 @@ export default function Services() {
         initial={{ width: "100%" }}
         whileInView={{ width: isMd ? "50%" : "100%" }}
         viewport={{ amount: 0.3 }}
-        transition={{ type: "tween", duration: 1.2, ease: [0.76, 0, 0.24, 1] }}
+        transition={{ type: "tween", duration: 0.8, ease: [0.76, 0, 0.24, 1] }}
       >
         <Image
           src="/images/services-bg.png"
@@ -49,7 +49,7 @@ export default function Services() {
         initial={isMd ? { width: "0%", opacity: 0, x: 100 } : { width: "100%", opacity: 0, y: 50 }}
         whileInView={isMd ? { width: "50%", opacity: 1, x: 0, y:0, padding: "55px" } : { width: "100%", opacity: 1, y: 0, padding: "20px" }}
         viewport={{ amount: 0.2 }}
-        transition={{ duration: 1, delay: 0.2, ease: [0.22, 1, 0.36, 1] }}
+        transition={{ duration: 0.3, delay: 0.2, ease: [0.22, 1, 0.36, 1] }}
       >
         <SectionHeader label="SERVICES" number="03" dark className="mb-10" />
 
@@ -60,7 +60,7 @@ export default function Services() {
               className="relative text-left"
               initial={{ opacity: 0, x: 20}}
               whileInView={{ opacity: 1, x: 0 }}
-              transition={{ duration: 0.4, delay: 1.0 + (i * 0.01), ease: [0.22, 1, 0.36, 1] }}
+              transition={{ duration: 0.4, delay: 0.8 + (i * 0.01), ease: [0.22, 1, 0.36, 1] }}
             >
               <span 
                 className="text-[66px] text-white leading-[0.9] cursor-pointer"
