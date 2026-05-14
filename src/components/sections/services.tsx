@@ -16,8 +16,10 @@ const SERVICES = [
 export default function Services() {
   const [expandedService, setExpandedService] = useState<string | null>(null);
   const [isMd, setIsMd] = useState(false);
+  const [mounted, setMounted] = useState(false);
 
   useEffect(() => {
+    setMounted(true);
     const checkSize = () => setIsMd(window.innerWidth >= 768);
     checkSize();
     window.addEventListener('resize', checkSize);
@@ -30,9 +32,9 @@ export default function Services() {
       <motion.div 
         className="relative h-[400px] lg:h-full overflow-hidden"
         initial={{ width: "100%" }}
-        whileInView={{ width: isMd ? "50%" : "100%" }}
+        whileInView={mounted && isMd ? { width: "50%" } : { width: "100%" }}
         viewport={{ amount: 0.3 }}
-        transition={{ type: "tween", duration: 0.8, ease: [0.76, 0, 0.24, 1] }}
+        transition={{ type: "tween", duration: 1, ease: [0.76, 0, 0.24, 1] }}
       >
         <Image
           src="/images/services-bg.png"
@@ -46,10 +48,15 @@ export default function Services() {
       {/* Right — Red panel */}
       <motion.div 
         className="relative h-full bg-primary-red mb-24"
-        initial={isMd ? { width: "0%", opacity: 0, x: 100 } : { width: "100%", opacity: 0, y: 50 }}
-        whileInView={isMd ? { width: "50%", opacity: 1, x: 0, y:0, padding: "55px" } : { width: "100%", opacity: 1, y: 0, padding: "20px" }}
-        viewport={{ amount: 0.1 }}
-        transition={{ duration: 0.2, delay: 0.2, ease: [0.22, 1, 0.36, 1] }}
+        initial={mounted && isMd ? { width: "0%", opacity: 0, x: 100 } : { width: "0%", opacity: 0, y: 50 }}
+        whileInView={mounted && isMd ? { width: "50%", opacity: 1, x: 0, y:0, padding: "55px" } : { width: "100%", opacity: 1, y: 0, x:0, padding: "20px" }}
+        viewport={{ amount: 0.2 }}
+        transition={{ 
+          width: { type: "tween", duration: 0.8, ease: [0.76, 0, 0.24, 1] },
+          opacity: { duration: 0.4, delay: 0.2 },
+          padding: { duration: 0.8, ease: [0.76, 0, 0.24, 1] },
+          default: { duration: 0.6, ease: [0.22, 1, 0.36, 1] }
+        }}
       >
         <SectionHeader label="SERVICES" number="03" dark className="mb-10" />
 
@@ -60,7 +67,7 @@ export default function Services() {
               className="relative text-left"
               initial={{ opacity: 0, x: 20}}
               whileInView={{ opacity: 1, x: 0 }}
-              transition={{ duration: 0.4, delay: 0.8 + (i * 0.01), ease: [0.22, 1, 0.36, 1] }}
+              transition={{ duration: 0.4, delay: 0.5 + (i * 0.01), ease: [0.22, 1, 0.36, 1] }}
             >
               <span 
                 className="text-[66px] text-white leading-[0.9] cursor-pointer"
