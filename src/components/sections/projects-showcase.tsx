@@ -13,10 +13,10 @@ interface ShowcaseProject {
 }
 
 const PROJECTS: ShowcaseProject[] = [
-  { name: 'GULLY', year: '2025', image: '/images/project-gully.jpg', video:'https://res.cloudinary.com/dcmbfe9at/video/upload/v1778690313/gully_ugoyg5.mp4' },
-  { name: 'ENOLA', year: '2025', image: '/images/project-enola-2.jpg',video:'https://res.cloudinary.com/dcmbfe9at/video/upload/v1778690337/enola_l612bv.mp4' },
-  { name: 'TROPICAL ESTATE', year: '2025', image: '/images/project-prada.jpg', video:'https://res.cloudinary.com/dcmbfe9at/video/upload/v1778690337/kerala_home_ukmfyi.mp4' },
-  { name: 'ORNATE FLESH', year: '2025', image: '/images/project-ornate.jpg',video:'https://res.cloudinary.com/dcmbfe9at/video/upload/v1778690343/ornate_foc5ic.mp4' },
+  { name: 'GULLY', year: '2025', image: '/images/project-gully.jpg', video:'https://res.cloudinary.com/dcmbfe9at/video/upload/q_auto/f_auto/v1778690313/gully_ugoyg5.mp4' },
+  { name: 'ENOLA', year: '2025', image: '/images/project-enola-2.jpg',video:'https://res.cloudinary.com/dcmbfe9at/video/upload/q_auto/f_auto/v1778690337/enola_l612bv.mp4' },
+  { name: 'TROPICAL ESTATE', year: '2025', image: '/images/project-prada.jpg', video:'https://res.cloudinary.com/dcmbfe9at/video/upload/q_auto/f_auto/v1778690337/kerala_home_ukmfyi.mp4' },
+  { name: 'ORNATE FLESH', year: '2025', image: '/images/project-ornate.jpg',video:'https://res.cloudinary.com/dcmbfe9at/video/upload/q_auto/f_auto/v1778690343/ornate_foc5ic.mp4' },
   { name: 'GORILLAZ', year: '2025', image: '/images/project-prada.jpg',video:'https://res.cloudinary.com/dcmbfe9at/video/upload/q_auto/f_auto/v1778690589/gorillaz_cptnsk.mp4' },
 ];
 

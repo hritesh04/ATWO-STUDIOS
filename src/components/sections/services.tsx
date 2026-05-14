@@ -48,8 +48,8 @@ export default function Services() {
         className="relative h-full bg-primary-red mb-24"
         initial={isMd ? { width: "0%", opacity: 0, x: 100 } : { width: "100%", opacity: 0, y: 50 }}
         whileInView={isMd ? { width: "50%", opacity: 1, x: 0, y:0, padding: "55px" } : { width: "100%", opacity: 1, y: 0, padding: "20px" }}
-        viewport={{ amount: 0.2 }}
-        transition={{ duration: 0.3, delay: 0.2, ease: [0.22, 1, 0.36, 1] }}
+        viewport={{ amount: 0.1 }}
+        transition={{ duration: 0.2, delay: 0.2, ease: [0.22, 1, 0.36, 1] }}
       >
         <SectionHeader label="SERVICES" number="03" dark className="mb-10" />
 

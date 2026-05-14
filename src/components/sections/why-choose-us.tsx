@@ -40,7 +40,7 @@ export default function WhyChooseUs() {
       {/* Sticky Background Video & Title */}
       <div className="sticky top-0 left-0 w-full h-screen overflow-hidden">
         <video
-          src="https://res.cloudinary.com/dcmbfe9at/video/upload/v1778690282/why-us_irb2hb.mp4"
+          src="https://res.cloudinary.com/dcmbfe9at/video/upload/q_auto/f_auto/v1778690282/why-us_irb2hb.mp4"
           autoPlay
           loop
           muted
