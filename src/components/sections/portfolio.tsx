@@ -32,10 +32,10 @@ const PROJECTS: Project[] = [
     link:"https://www.instagram.com/p/DWg4P3zmJEx/?img_index=2&igsh=MW03Y2VoOGE2aGtxMA==",
   },
   {
-    title: 'Kartik Research — Sustainable Fashion Campaign',
-    image: 'https://res.cloudinary.com/dcmbfe9at/image/upload/v1778692651/demo-ornate-2_zl6ts5.png',
-    tags: ['Sustainable', 'Textile', 'Narrative'],
-    link:"https://www.instagram.com/p/DVL6Drmk2h0/?igsh=MmZlbTN2eTVrdWo3",
+    title: 'Bluorng — Fashion Campaign',
+    image: 'https://res.cloudinary.com/dcmbfe9at/image/upload/v1779094379/webp_fhd_kqqwyr.webp',
+    tags: ['Fashion', 'Shoot', 'Campaign'],
+    link:"https://www.instagram.com/p/DYZ2_V3Iqay/",
   },
 ];
 
