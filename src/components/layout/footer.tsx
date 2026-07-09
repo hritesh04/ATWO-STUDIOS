@@ -30,11 +30,11 @@ export default function Footer() {
         <a href="#" className="font-coolvetica text-[22px] text-primary-red hover:opacity-70 transition-opacity" data-hover>
           BOOK A CALL
         </a>
-        <a href="mailto:ATWOSTUDIOS@CONTACT.COM" className="font-coolvetica text-[22px] text-primary-red underline hover:opacity-70 transition-opacity" data-hover>
-          atwoiostudios@gmail.com
+        <a href="mailto:contact@atwostudios.com" className="font-coolvetica text-[22px] text-primary-red underline hover:opacity-70 transition-opacity" data-hover>
+          contact@atwostudios.com
         </a>
-        <a href="#" className="font-coolvetica text-[22px] text-primary-red hover:opacity-70 transition-opacity" data-hover>
-          PORTFOLIO
+        <a href="https://www.linkedin.com/company/atwo-studios/" target='blank' className="font-coolvetica text-[22px] text-primary-red hover:opacity-70 transition-opacity" data-hover>
+          LINKEDIN
         </a>
         <a href="https://www.instagram.com/atwo.io?igsh=dWh6Z3I2am10b3U0&utm_source=qr" target='blank' className="font-coolvetica text-[22px] text-primary-red hover:opacity-70 transition-opacity" data-hover>
           INSTAGRAM
