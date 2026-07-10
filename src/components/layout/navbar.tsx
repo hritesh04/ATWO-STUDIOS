@@ -1,29 +1,42 @@
 "use client";
 
-import { useState } from 'react';
-import { motion, AnimatePresence } from 'motion/react';
-import Image from 'next/image';
-import { Menu, X } from 'lucide-react';
-import { TextRoll } from '@/src/components/ui/text-roll';
+import { use, useEffect, useState } from "react";
+import { motion, AnimatePresence } from "motion/react";
+import Image from "next/image";
+import { Menu, X } from "lucide-react";
+import { TextRoll } from "@/src/components/ui/text-roll";
 
-function MagneticLink({ children, className, href, postNav }: { children: string | React.ReactNode; className?: string; href?: string, postNav?: () => void }) {
+function MagneticLink({
+  children,
+  className,
+  href,
+  postNav,
+}: {
+  children: string | React.ReactNode;
+  className?: string;
+  href?: string;
+  postNav?: () => void;
+}) {
   const [isHovered, setIsHovered] = useState(false);
   const [key, setKey] = useState(0);
 
   const handleClick = (e: React.MouseEvent<HTMLAnchorElement>) => {
-    if (!href || !href.startsWith('#')) return;
+    if (!href || !href.startsWith("#")) return;
     const target = document.querySelector(href);
     if (target) {
       e.preventDefault();
-      target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+      target.scrollIntoView({ behavior: "smooth", block: "start" });
 
       if (postNav) {
-        const observer = new IntersectionObserver((entries) => {
-          if (entries[0].isIntersecting) {
-            observer.disconnect();
-            postNav();
-          }
-        }, { threshold: href === "#work" ? 0.47 : 0.9 });
+        const observer = new IntersectionObserver(
+          (entries) => {
+            if (entries[0].isIntersecting) {
+              observer.disconnect();
+              postNav();
+            }
+          },
+          { threshold: href === "#work" ? 0.47 : 0.9 }
+        );
 
         observer.observe(target);
       }
@@ -32,18 +45,33 @@ function MagneticLink({ children, className, href, postNav }: { children: string
 
   return (
     <a
-      href={href || '#'}
-      className={`nav-magnetic ${className || ''}`}
+      href={href || "#"}
+      className={`nav-magnetic ${className || ""}`}
       onClick={handleClick}
-      onMouseEnter={() => { setIsHovered(true); setKey(k => k + 1); }}
+      onMouseEnter={() => {
+        setIsHovered(true);
+        setKey((k) => k + 1);
+      }}
       onMouseLeave={() => setIsHovered(false)}
     >
       {postNav ? (
-        typeof children === 'string' ? <span>{children}</span> : children
+        typeof children === "string" ? (
+          <span>{children}</span>
+        ) : (
+          children
+        )
       ) : isHovered ? (
-        typeof children === 'string' ? <TextRoll key={key} duration={0.25}>{children}</TextRoll> : children
+        typeof children === "string" ? (
+          <TextRoll key={key} duration={0.25}>
+            {children}
+          </TextRoll>
+        ) : (
+          children
+        )
+      ) : typeof children === "string" ? (
+        <span>{children}</span>
       ) : (
-        typeof children === 'string' ? <span>{children}</span> : children
+        children
       )}
     </a>
   );
@@ -55,14 +83,87 @@ interface NavbarProps {
 }
 
 export default function Navbar({ loading, isScrolled }: NavbarProps) {
+  useEffect(() => {
+    const targetElements = document.querySelectorAll(
+      "#hero, #about-us, #work, #services, #contact-us"
+    );
+    const aboutUs = document.querySelector(`a[href="#about-us"]`);
+    const work = document.querySelector(`a[href="#work"]`);
+    const services = document.querySelector(`a[href="#services"]`);
+    const contactUs = document.querySelector(`a[href="#contact-us"]`);
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            switch (entry.target.id) {
+              case "about-us":
+                aboutUs?.classList.add("text-[#D60000]");
+                work?.classList.remove("text-[#D60000]");
+                services?.classList.remove("text-[#D60000]");
+                contactUs?.classList.remove("text-[#D60000]");
+                break;
+              case "work":
+                work?.classList.add("text-[#D60000]");
+                aboutUs?.classList.remove("text-[#D60000]");
+                services?.classList.remove("text-[#D60000]");
+                contactUs?.classList.remove("text-[#D60000]");
+                break;
+              case "services":
+                services?.classList.add("text-[#D60000]");
+                aboutUs?.classList.remove("text-[#D60000]");
+                work?.classList.remove("text-[#D60000]");
+                contactUs?.classList.remove("text-[#D60000]");
+                break;
+              case "contact-us":
+                contactUs?.classList.add("text-[#D60000]");
+                aboutUs?.classList.remove("text-[#D60000]");
+                work?.classList.remove("text-[#D60000]");
+                services?.classList.remove("text-[#D60000]");
+                break;
+              default:
+                aboutUs?.classList.remove("text-[#D60000]");
+                work?.classList.remove("text-[#D60000]");
+                services?.classList.remove("text-[#D60000]");
+                contactUs?.classList.remove("text-[#D60000]");
+                break;
+            }
+          }
+        });
+      },
+      {
+        threshold: 0.3,
+      }
+    );
+
+    const whychooseus = document.querySelector("#why-choose-us");
+
+    const clearObserver = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            aboutUs?.classList.remove("text-[#D60000]");
+            work?.classList.remove("text-[#D60000]");
+            services?.classList.remove("text-[#D60000]");
+            contactUs?.classList.remove("text-[#D60000]");
+          }
+        });
+      },
+      { threshold: 0.1 }
+    );
+    if (whychooseus) clearObserver.observe(whychooseus);
+    // Loop through the list and observe each element
+    targetElements.forEach((element) => observer.observe(element));
+  }, []);
+
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
 
   return (
     <motion.nav
       className={`fixed z-[100] flex flex-col transition-all duration-500 ease-[cubic-bezier(0.22,1,0.36,1)] top-[30px] md:top-[50px] left-1/2 -translate-x-1/2 w-[calc(100%-40px)] md:w-[calc(100%-122px)] max-w-[1318px]
-        ${!isScrolled
-          ? 'bg-off-white/70 backdrop-blur-md px-6 py-4 rounded-[24px] shadow-[0_8px_32px_rgba(26,26,26,0.1)] border border-off-black/5 md:bg-transparent md:px-0 md:py-0 md:rounded-none md:shadow-none md:border-transparent md:backdrop-blur-none'
-          : 'bg-off-white/70 backdrop-blur-md px-6 py-4 md:px-10 md:py-5 rounded-[24px] shadow-[0_8px_32px_rgba(26,26,26,0.1)] border border-off-black/5'
+        ${
+          !isScrolled
+            ? "bg-off-white/70 backdrop-blur-md px-6 py-4 rounded-[24px] shadow-[0_8px_32px_rgba(26,26,26,0.1)] border border-off-black/5 md:bg-transparent md:px-0 md:py-0 md:rounded-none md:shadow-none md:border-transparent md:backdrop-blur-none"
+            : "bg-off-white/70 backdrop-blur-md px-6 py-4 md:px-10 md:py-5 rounded-[24px] shadow-[0_8px_32px_rgba(26,26,26,0.1)] border border-off-black/5"
         }`}
       initial={{ y: -100, opacity: 0 }}
       animate={!loading ? { y: 0, opacity: 1 } : {}}
@@ -70,30 +171,50 @@ export default function Navbar({ loading, isScrolled }: NavbarProps) {
     >
       <div className="flex items-center w-full justify-between transition-all duration-500">
         <MagneticLink href="#hero">
-        <Image
-          src="/images/a2-logo.png"
-          alt="ATWO Studios Logo"
-          width={48}
-          height={32}
-          className="w-auto h-[32px] object-contain shrink-0"
-          referrerPolicy="no-referrer"
+          <Image
+            src="/images/a2-logo.png"
+            alt="ATWO Studios Logo"
+            width={48}
+            height={32}
+            className="w-auto h-[32px] object-contain shrink-0"
+            referrerPolicy="no-referrer"
           />
         </MagneticLink>
 
-        <div className={`hidden md:flex flex-grow items-center transition-all duration-500 ${isScrolled ? 'justify-evenly px-4 xl:px-8' : 'justify-start'}`}>
-          <div className={`hidden md:block text-off-black text-[24px] tracking-wide transition-all duration-500 ${isScrolled ? '' : 'ml-6 md:ml-12'}`}>
+        <div
+          className={`hidden md:flex flex-grow items-center transition-all duration-500 ${
+            isScrolled ? "justify-evenly px-4 xl:px-8" : "justify-start"
+          }`}
+        >
+          <div
+            className={`hidden md:block text-off-black text-[24px] tracking-wide transition-all duration-500 ${
+              isScrolled ? "" : "ml-6 md:ml-12"
+            }`}
+          >
             <MagneticLink href="#about-us">ABOUT US</MagneticLink>
           </div>
-          <div className={`hidden md:block text-off-black text-[24px] tracking-wide transition-all duration-500 ${isScrolled ? '' : 'ml-8'}`}>
+          <div
+            className={`hidden md:block text-off-black text-[24px] tracking-wide transition-all duration-500 ${
+              isScrolled ? "" : "ml-8"
+            }`}
+          >
             <MagneticLink href="#work">WORK</MagneticLink>
           </div>
-          <div className={`transition-all duration-500 ${isScrolled ? 'hidden' : 'flex-grow'}`} />
+          <div
+            className={`transition-all duration-500 ${
+              isScrolled ? "hidden" : "flex-grow"
+            }`}
+          />
           <div className="hidden md:block text-off-black text-[24px] tracking-wide transition-all duration-500">
             <MagneticLink href="#services">SERVICES</MagneticLink>
           </div>
         </div>
 
-        <div className={`hidden md:flex items-center shrink-0 text-off-black text-[24px] tracking-wide transition-all duration-500 ${isScrolled ? '' : 'ml-8'}`}>
+        <div
+          className={`hidden md:flex items-center shrink-0 text-off-black text-[24px] tracking-wide transition-all duration-500 ${
+            isScrolled ? "" : "ml-8"
+          }`}
+        >
           <MagneticLink href="#contact-us">CONTACT US</MagneticLink>
         </div>
 
@@ -112,16 +233,22 @@ export default function Navbar({ loading, isScrolled }: NavbarProps) {
         {isMobileMenuOpen && (
           <motion.div
             initial={{ height: 0, opacity: 0, marginTop: 0 }}
-            animate={{ height: 'auto', opacity: 1, marginTop: 16 }}
+            animate={{ height: "auto", opacity: 1, marginTop: 16 }}
             exit={{ height: 0, opacity: 0, marginTop: 0 }}
             transition={{ duration: 0.3, ease: [0.22, 1, 0.36, 1] }}
             className="md:hidden overflow-hidden w-full flex flex-col items-center gap-4 pb-2"
           >
-            {['ABOUT US', 'WORK', 'SERVICES', 'CONTACT US'].map((item) => (
-              <div key={item} className="text-off-black text-[24px] tracking-wide w-full text-center py-2 rounded-lg transition-colors">
-                <MagneticLink href={`#${item.toLowerCase().replace(' ', '-')}`}
-                postNav={()=>setIsMobileMenuOpen(false)}
-                >{item}</MagneticLink>
+            {["ABOUT US", "WORK", "SERVICES", "CONTACT US"].map((item) => (
+              <div
+                key={item}
+                className="text-off-black text-[24px] tracking-wide w-full text-center py-2 rounded-lg transition-colors"
+              >
+                <MagneticLink
+                  href={`#${item.toLowerCase().replace(" ", "-")}`}
+                  postNav={() => setIsMobileMenuOpen(false)}
+                >
+                  {item}
+                </MagneticLink>
               </div>
             ))}
           </motion.div>

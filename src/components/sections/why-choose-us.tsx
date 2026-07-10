@@ -48,8 +48,8 @@ export default function WhyChooseUs() {
 
   return (
     <section
-      ref={containerRef}
       id="why-choose-us"
+      ref={containerRef}
       className="relative w-full bg-black h-[370vh]"
     >
       {/* Sticky Background Video & Title */}
@@ -141,7 +141,7 @@ function FeatureCard({ feature, i }: { feature: FeatureCard; i: number }) {
   return (
     <div
       ref={cardRef}
-      className={`w-[80%] md:w-[30%] ${
+      className={`w-[80%] sm:w-[60%] md:w-[50%] lg:w-[30%] ${
         isRight ? "md:self-end" : "md:self-start"
       }`}
     >
