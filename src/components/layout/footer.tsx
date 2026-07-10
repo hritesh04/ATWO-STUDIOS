@@ -35,13 +35,13 @@ export default function Footer() {
           viewport={{ once: true }}
           transition={{ duration: 0.6, delay: 0.2 }}
         >
-          <a
-            href="#"
+          <button
             className="font-coolvetica text-[22px] text-primary-red hover:opacity-70 transition-opacity whitespace-nowrap text-center md:text-left"
             data-hover
+            onClick={() => setIsBookingOpen(true)}
           >
             BOOK A CALL
-          </a>
+          </button>
           <a
             href="mailto:contact@atwostudios.com"
             className="font-coolvetica text-[22px] text-primary-red underline hover:opacity-70 transition-opacity md:text-left"
